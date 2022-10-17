@@ -1,4 +1,6 @@
 package ru.netology.sql2.data;
+
+import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import lombok.Value;
 import org.apache.commons.dbutils.QueryRunner;
@@ -18,28 +20,21 @@ public class DataHelper {
 
     public static AuthInfo getAuthInfo() {
 
-        return new AuthInfo(User.getLog().getUser(), "qwerty123");
+        return new AuthInfo(getLog().getUser(), "qwerty123");
     }
 
-    @Value
+    public static User getLog() {
 
-    public static class LoginInfo {
-        private String login;
-    }
+        return new User("vasya");
 
-    public static LoginInfo getLoginInfo() {
-
-        return new LoginInfo(User.getLog().getUser());
-    }
-
-
-    @Value
-    public static class VerificationCode {
-        private String code;
 
     }
 
-
+    public static String invalidPass() {
+        Faker faker = new Faker();
+        String pass = faker.internet().password();
+        return pass;
+    }
 
 
 }

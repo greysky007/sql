@@ -6,9 +6,5 @@ import lombok.Value;
 public class User {
     private String user;
 
-    public  static User getLog(){
 
-        return new User("vasya");
-        
-    }
 }

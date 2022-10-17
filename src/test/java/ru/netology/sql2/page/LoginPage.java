@@ -27,40 +27,12 @@ public class LoginPage {
     }
 
     public void invalidPass(DataHelper.AuthInfo info) {
-        Faker faker = new Faker(new Locale("en"));
         loginField.setValue(info.getLogin());
-        passwordField.setValue(faker.internet().password());
+        passwordField.setValue(DataHelper.invalidPass());
         loginButton.click();
         error.shouldBe(visible);
-        return;
+
     }
-    public void invalidPass2(DataHelper.AuthInfo info) {
-        Faker faker = new Faker(new Locale("en"));
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(faker.internet().password());
-        loginButton.click();
-
-        loginField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        passwordField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(faker.internet().password());
-        loginButton.click();
-
-        loginField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        passwordField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(faker.internet().password());
-        loginButton.click();
-
-        loginField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        passwordField.sendKeys(Keys.CONTROL, "a", Keys.DELETE );
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(faker.internet().password());
-        loginButton.click();
-
-        return;
-    }
-
 
 }
 
